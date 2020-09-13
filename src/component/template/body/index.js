@@ -1,19 +1,75 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from "react-router-dom"
-import { Login, Register, Home } from "../../../pages"
+import { connect } from 'react-redux'
+import { Login, Register, Home, Admin, Investor, Mitra } from "../../../pages"
+import { setLogout } from "../../../store/action"
 
 class Body extends Component {
     render() {
-        return(
+        const { userOnLogin, isLogin, doLogout } = this.props
+
+        return(          
             <Switch>
                 <Route exact path="/">
-                    <Home />
+                    {
+                        (isLogin && userOnLogin.role === "admin") ? (
+                            <Redirect to="/admin" />
+                        ) : (isLogin && userOnLogin.role === "investor") ? (
+                            <Redirect to="/investor" />
+                        ) : (isLogin && userOnLogin.role === "mitra") ? (
+                            <Redirect to="/mitra" />
+                        ) : <Home />
+                    }                    
                 </Route>
                 <Route path="/login">
-                    <Login/>
+                    {
+                        (isLogin && userOnLogin.role === "admin") ? (
+                            <Redirect to="/admin" />
+                        ) : (isLogin && userOnLogin.role === "investor") ? (
+                            <Redirect to="/investor" />
+                        ) : (isLogin && userOnLogin.role === "mitra") ? (
+                            <Redirect to="/mitra" />
+                        ) : <Login/>
+                    }                    
                 </Route>
                 <Route path="/register">
-                    <Register/>
+                    {
+                        (isLogin && userOnLogin.role === "admin") ? (
+                            <Redirect to="/admin" />
+                        ) : (isLogin && userOnLogin.role === "investor") ? (
+                            <Redirect to="/investor" />
+                        ) : (isLogin && userOnLogin.role === "mitra") ? (
+                            <Redirect to="/mitra" />
+                        ) : <Register />
+                    }       
+                </Route>
+                <Route path="/admin">
+                    {
+                        (isLogin && userOnLogin.role === "admin") ? (
+                            <Admin
+                                doLogout={doLogout}
+                            />
+                        ) : <Redirect to="/login"/>
+                    }                    
+                </Route>
+                <Route path="/investor">
+                    {
+                        (isLogin && userOnLogin.role === "investor") ? (
+                            <Investor
+                                doLogout={doLogout}
+                            />
+                        ) : <Redirect to="/login"/>
+                    }                    
+                </Route>
+                <Route path="/mitra">
+                    {
+                        (true) ? (
+                        // (isLogin && userOnLogin.role === "mitra") ? (
+                            <Mitra
+                                doLogout={doLogout}
+                            />
+                        ) : <Redirect to="/login"/>
+                    }                    
                 </Route>
             </Switch>
         
@@ -21,4 +77,13 @@ class Body extends Component {
     }
 }
 
-export default Body
+const mapStateToProps = (state) => ({
+    userOnLogin : state.authReducer.userOnLogin,
+    isLogin : state.authReducer.isLogin
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    doLogout: () => dispatch(setLogout())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body)

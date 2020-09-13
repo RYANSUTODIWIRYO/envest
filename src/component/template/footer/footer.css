@@ -2,11 +2,11 @@
     display: flex;
     justify-content: center;  
     width: 100%;  
-    border-top: 1px solid rgb(220, 220, 220);
-    color: grey;
-    border: 0 100px 0 100px;
+    border-top: 1px solid rgb(220, 220, 220);    
+    margin: 0 100px 0 100px;
 }
 
 .footer p {
+    color: grey;
     font-size: 10px;
 }

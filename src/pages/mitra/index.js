@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Navbar } from "../../component/template"
-import "./admin.css"
 
-class Admin extends Component {
+class Mitra extends Component {
     render() {
         return(
-            <div className="admin">
+            <div className="mitra">
                 <div className="navbar">
                     <div className="navbarContent">
                         <Navbar
@@ -14,23 +13,26 @@ class Admin extends Component {
                         >
                             {onclick=this.props.doLogout}
                         </Navbar>
-
                         <Navbar
                             linkTo=""
                             label="Verikfikasi"
                         />
+                        <Navbar
+                            linkTo=""
+                            label="Permodalan"
+                        />
                     </div> 
                 </div>
-                <div className="container-wrapper">                                        
+                <div className="container-wrapper">
                     <div style={{textAlign: "center"}}>
                         <h1>Envest</h1>
                         <p style={{marginTop:"-20px"}}>Solusi Investasi Anda</p>
-                        <h1>Selamat Datang, Admin</h1>
-                    </div>   
+                        <h1>Selamat Datang, Mitra</h1>
+                    </div>    
                 </div>
             </div>
         )
     }
 }
 
-export default Admin
+export default Mitra

@@ -5,19 +5,22 @@ class Home extends Component {
     render() {
         return(
             <div className="home">
-                <div className="container-wrapper">
-                    <div className="navbar">
+                <div className="navbar">
+                    <div className="navbarContent">
                         <Navbar
-                            linkTo="login"
+                            linkTo="/login"
                             label="Login"
                         />
                         <Navbar
-                            linkTo="register"
+                            linkTo="/register"
                             label="Daftar"
                         />
-                    </div>
-                    <div>
-                        Home
+                    </div> 
+                </div>
+                <div className="container-wrapper">                    
+                    <div style={{textAlign: "center"}}>
+                        <h1>Envest</h1>
+                        <p>Solusi Investasi Anda</p>
                     </div>
                 </div>
             </div>

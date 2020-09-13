@@ -1,4 +1,4 @@
-.login {
+.register {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,13 +6,13 @@
     width: 100%;
 }
 
-.loginContent {
+.registerContent {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.formLogin {
+.formRegister {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -23,18 +23,18 @@
     width: 300px;
 }
 
-.formLoginContent {
+.formRegisterContent {
     display: flex;
     justify-content: center;
 }
 
-.formLogin input {
+.formRegister input {
     border: 0px;
     border-bottom: 1px solid black;
     margin-bottom: 30px;
 }
 
-.formLogin button {
+.formRegister button {
     border: none;
     width: 160px;
     background-color: #d9833b;
@@ -42,7 +42,7 @@
     padding: 5px;
 }
 
-.formLogin button:hover {
+.formRegister button:hover {
     cursor: pointer;
     background-color: green;
 }

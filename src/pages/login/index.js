@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import { setLogin } from "../../store/action"
+import { Navbar } from "../../component/template"
 import "./login.css"
 
 class Login extends Component {
@@ -24,6 +25,10 @@ class Login extends Component {
         const { email, password } = this.state
         const { doLogin } = this.props
 
+        if (email === "" || password === "") {
+                return alert("Mohon formulir di isi dengan lengkap")
+            }
+
         fetch("http://localhost:8080/envest/login", {
             method: "POST",
             headers: {
@@ -37,17 +42,35 @@ class Login extends Component {
         })
         .then(res => res.json())
         .then(json => {
-            if (!json.error) {
+            if (!json.error) {    
+                alert("Login berhasil")            
                 return doLogin(json)
             } 
             console.log(json.error)
         })
-        .catch(err => console.error(err))
+        .catch(err => {
+            console.error(err)
+            alert("Kesalahan koneksi")
+        })
     }
 
     render() {
+        // let loadingLogo = "none"
+
         return(
             <div className="login">
+                <div className="navbar">
+                    <div className="navbarContent">                        
+                        <Navbar
+                            linkTo="/register"
+                            label="Daftar"
+                        />
+                        <Navbar
+                            linkTo="/"
+                            label="Home"
+                        />
+                    </div> 
+                </div>
                 <div className="container-wrapper loginContent">
                     <form className="formLogin">
                         <div className="formLoginContent" style={{marginBottom:"20px"}}>
@@ -72,18 +95,14 @@ class Login extends Component {
                             />
                         </div>
                         <div className="formLoginContent">   
-                            <button
-                                onClick={this.onClickLoginHandler}
-                            >
+                            <button onClick={this.onClickLoginHandler}>
                                 Login
                             </button>
                         </div>
-                        <div className="formLoginContent">
-                            <Link to="/register">                            
-                                <p style={{fontSize:"10px"}}>
-                                    Daftar di sini
-                                </p>
-                            </Link>
+                        <div className="formLoginContent">                                                        
+                            <p style={{fontSize:"10px"}}>
+                                Belum punya akun? <Link to="/register" style={{color: "blue", marginLeft: "0px"}}>Daftar di sini</Link>
+                            </p>
                         </div>
                     </form>
                 </div>
