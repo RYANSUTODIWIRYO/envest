@@ -1,8 +1,17 @@
+* {
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+body{
+    background-color: #efeff0;
+}
+
 #root {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: -10px;
 }
 
 .container-wrapper {

@@ -1,11 +1,11 @@
-[+] Registrasi
-[+] Login
-    [x] Admin
-        [-] Verifikasi Investor
-        [-] Verifikasi Pebisnis
-    [x] Pebisnis
-        [-] Tes
-        [-] Menawarkan Peluang Usaha
-    [x] Investor
-        [-] Tes
-        [-] Menginvestasikan Modal
+Registrasi
+Login
+    |- Admin
+    |   |-Verifikasi Investor
+    |   L Verifikasi Pebisnis
+    |- Pebisnis
+    |   |-Tes
+    |   L Menawarkan Peluang Usaha
+    |- Investor
+        |-Tes
+        L Menginvestasikan Modal
